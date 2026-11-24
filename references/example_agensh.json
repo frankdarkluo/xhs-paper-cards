@@ -1,0 +1,161 @@
+{
+  "theme": "sage",
+  "meta": {
+    "paper_title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+    "org_year": "Microsoft Research · arXiv:2609.26781 (2026)"
+  },
+  "cover": {
+    "kicker": "MULTI-AGENT · 技术报告",
+    "title": "1,024 个 Agent\n{不要总指挥}？",
+    "subtitle": "拿掉中心 Orchestrator，仅靠**去中心化自组织协作**，大规模智能体依然能在复杂软件工程任务上随规模持续提效。",
+    "chart": {
+      "title": "Pandoc 任务通过率随规模扩展曲线",
+      "series_label": "实测通过率 (%)",
+      "show_trend": true,
+      "trend_label": "Log₂ 对数线性趋势",
+      "badge_num": "+21.17 pt",
+      "badge_label": "规模跃升",
+      "unit": "%",
+      "y_min": 25,
+      "y_max": 65,
+      "x_label": "Agent 数量规模 · Number of Agents (Log₂ Scale)",
+      "points": [
+        { "x": "1",     "y": 33.89, "pos": 0 },
+        { "x": "8",     "y": 41.75, "pos": 3 },
+        { "x": "32",    "y": 43.11, "pos": 5, "label_pos": "below" },
+        { "x": "128",   "y": 50.94, "pos": 7 },
+        { "x": "1,024", "y": 55.06, "pos": 10 }
+      ],
+      "stages_title": "随规模涌现的四层自组织机制（Emergent Cooperation）",
+      "stages_hint": "第 03 页详解 →",
+      "stages": [
+        { "step": "STAGE 01 · ≥8",    "title": "对等协同",     "sub": "Peer Coordination" },
+        { "step": "STAGE 02 · ≥32",   "title": "多工集成",     "sub": "Multi-worker Integ." },
+        { "step": "STAGE 03 · ≥128",  "title": "标准化工作流", "sub": "Standard Workflows" },
+        { "step": "STAGE 04 · 1,024", "title": "角色专精分工", "sub": "Specialized Roles" }
+      ]
+    },
+    "metrics": [
+      {
+        "eyebrow": "跨任务综合收益（5 项软件基准）",
+        "value": "+49%",
+        "unit": "平均相对提升",
+        "desc": "1→128 Agents 均分 19.31%→28.78% · 覆盖 5 类代码库"
+      },
+      {
+        "eyebrow": "系统协调范式",
+        "value": "0",
+        "unit": "中心调度节点",
+        "desc": "纯去中心化自组织演化 · 消除单点指令瓶颈"
+      }
+    ],
+    "swipe_cue": "右滑看痛点对比 →"
+  },
+  "problem": {
+    "kicker": "PROBLEM · 为什么难",
+    "title": "中心总指挥，为什么\n{管不好上百个} Agent？",
+    "subtitle": "传统多智能体依赖单一 Orchestrator 拆解任务并汇总状态，但规模一旦跨过数十节点，协调成本便急剧反噬收益。",
+    "naive": {
+      "label": "中心化调度（Orchestrator）",
+      "points": [
+        { "head": "全局上下文迅速撑爆", "body": "总控节点需吞吐所有子任务日志，长程噪声淹没关键信号。" },
+        { "head": "单点规划僵化迟滞",   "body": "顶层预先拆分的静态子图，难以适应代码库探索中的动态报错。" },
+        { "head": "同步等待拖垮并发度", "body": "大批 Worker 卡在汇报与等指令环节，扩规模反而掉效率。" }
+      ]
+    },
+    "ours": {
+      "label": "去中心化自组织（Agensh）",
+      "points": [
+        { "head": "共享环境状态替代汇报", "body": "通过文件系统与提交记录异步对齐，无需中心节点中转。" },
+        { "head": "局部交互涌现标准流",   "body": "随并发密度上升，自发形成分支合并、测试门禁等协作契约。" },
+        { "head": "按需分化专精角色",     "body": "大规模下自然涌现探索者、实现者、验证者与集成者分工。" }
+      ]
+    },
+    "insight": "**核心洞察：**大规模协作的瓶颈不在单个模型智商，而在**组织通信拓扑**——把“全局强管控”换成“共享环境 + 局部自治”，规模才从负担变成红利。",
+    "swipe_cue": "右滑拆解四层机制 →"
+  },
+  "method": {
+    "kicker": "METHOD · 核心机制",
+    "title": "从 8 到 1,024：\n{四层协作}如何自发涌现？",
+    "subtitle": "不靠人工硬编码角色表，系统在共享工作区原语（Agensh）下随 Agent 数量跨越阈值，逐级演化出四种高阶组织行为。",
+    "steps": [
+      {
+        "name": "对等协同（Peer Coordination）",
+        "tag": "Scale ≥ 8",
+        "desc": "智能体通过共享目录与状态锁感知彼此进度，**主动规避重复改同一模块**，完成基础并行探索。"
+      },
+      {
+        "name": "多工集成（Multi-worker Integration）",
+        "tag": "Scale ≥ 32",
+        "desc": "多个并行补丁开始产生接口耦合，部分智能体自发承担**跨模块合并与冲突消解**职责。"
+      },
+      {
+        "name": "标准化工作流（Standardized Workflows）",
+        "tag": "Scale ≥ 128",
+        "desc": "群体沉淀出统一的**先复现、再改码、过测试再合入**规范，大幅降低大规模协作的集成熵增。"
+      },
+      {
+        "name": "角色专精分工（Specialized Roles）",
+        "tag": "Scale = 1,024",
+        "highlight": true,
+        "desc": "百至千级规模下分化出**架构定位、局部攻关、回归测试与守门集成**等稳定专职，支撑复杂工程闭环。"
+      }
+    ],
+    "key_knife": "**最关键的一刀：**作者没有设计复杂的“上下级汇报协议”，而是只提供类似 Shell/Git 的**轻量共享环境原语**，让组织结构随规模压力自然生长。",
+    "swipe_cue": "右滑看实验证据 →"
+  },
+  "evidence": {
+    "kicker": "EVIDENCE · 实验验证",
+    "title": "规模推至 1,024，\n{通过率持续走高}不崩盘",
+    "subtitle": "在 Pandoc 等 5 项复杂软件仓库基准上，通过率沿对数刻度稳步攀升，未出现传统多智能体常见的规模协调坍塌。",
+    "chart_title": "Pandoc 基准不同 Agent 规模下最终通过率对比",
+    "chart_sub": "同一任务环境下仅改变并发智能体规模（1 → 1,024）",
+    "badge": "+21.17 pt 净提升",
+    "unit": "%",
+    "bars": [
+      { "label": "1,024 Agents (Ours)", "value": 55.06, "is_ours": true },
+      { "label": "128 Agents",          "value": 50.94 },
+      { "label": "32 Agents",           "value": 43.11 },
+      { "label": "8 Agents",            "value": 41.75 },
+      { "label": "1 Agent (Baseline)",  "value": 33.89 }
+    ],
+    "ablations": [
+      {
+        "tag": "CROSS-TASK · 跨任务泛化",
+        "head": "五项软件基准平均提升 +49%",
+        "body": "相对单 Agent 基线均取得显著正收益，证明自组织红利并非单一仓库巧合。"
+      },
+      {
+        "tag": "SCALING LAW · 规模斜率",
+        "head": "符合 Log₂ 线性持续扩展趋势",
+        "body": "每当规模跨过关键阈值并解锁新一层协作范式（如 128 级标准流），曲线即迎来新一轮跃升。"
+      }
+    ],
+    "swipe_cue": "右滑看局限与速查 →"
+  },
+  "takeaways": {
+    "kicker": "TAKEAWAYS · 启发与边界",
+    "title": "读完这篇，最值得带走的\n{两个判断与一条边界}",
+    "subtitle": "既有对多 Agent 架构设计的直接启发，也要看清千级并发背后的工程前提与适用边界。",
+    "items": [
+      {
+        "head": "架构设计：先做“高信噪比共享环境”，少写死“总管 Prompt”",
+        "body": "当子任务边界难以事先穷举时，用可观测的代码库/状态黑板做异步解耦，比堆叠多层 Manager Agent 更抗规模膨胀。"
+      },
+      {
+        "head": "评测视角：盯住“过程组织行为”，而不只是最终 Pass@1",
+        "body": "把对等协同、工作流标准化、角色分化拆成可观测阶段，才能诊断大规模 Agent 到底在真协作还是空转内耗。"
+      }
+    ],
+    "limitations": [
+      "**算力与 Token 成本陡增：**规模按指数级翻倍（1 → 1,024）而绝对通过率呈对数线性增长，边际推理成本需结合任务价值权衡。",
+      "**依赖可并行验证的环境反馈：**软件工程天然具备编译器与单测信号；若迁移至缺乏客观验证器的开放式写作任务，自组织收敛难度会显著上升。"
+    ],
+    "cheat_sheet": [
+      { "k": "研究机构", "v": "Microsoft Research" },
+      { "k": "核心任务", "v": "复杂软件仓库工程" },
+      { "k": "适合读者", "v": "Agent 架构 / Infra 研究者" }
+    ],
+    "swipe_cue": "建议收藏 · 随时复盘 ★"
+  }
+}
